@@ -33,7 +33,7 @@
             <a href="index.php" class="navbar-brand">TODO APP</a>
             <div class="justify-content-end">
                 <span class="text-light">
-                    SeedKun
+                    Lovely
                 </span>
             </div>
         </nav>
