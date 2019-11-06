@@ -5,6 +5,13 @@ $task = $_POST['task'];
 
 $todo = new Todo();
 
-$todo->create($task);
+// 新しいタスクを作成(作成したタスクのIDを取得)
+$latestId = $todo->create($task);
 
-header('Location: index.php');
+// 最新のタスクを取得
+$latestTask = $todo->get($latestId);
+
+// 最新のタスクをjason形式にして通信元に返す
+echo json_encode($latestTask);
+
+// header('Location: index.php');
