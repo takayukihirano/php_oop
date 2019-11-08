@@ -58,6 +58,7 @@
                     <th>STATUS</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -65,12 +66,25 @@
             <tr id="task-<?php echo h($task['id']);?>">
             <td><?php echo h($task['name']); ?></td>
             <td><?php echo h($task['created_date']); ?></td>
-            <td>NOT YET</td>
+
+            <!-- Not yet か Done かを if文で挿入 -->
+            <?php if($task['done_flg'] == 0): ?>
+             <td id='haruka-<?php echo h($task['id']);?>'>NOT YET</td>
+            <?php else: ?>
+             <td>DONE</td>
+            <?php endif; ?>
+
             <td>
             <a class="text-success" href="edit.php?id=<?php echo h($task['id']);?>">EDIT</a>
             </td>
             <td>
             <a data-id="<?php echo h($task['id']);?>" class="text-danger delete-button" href="delete.php?id=<?php echo h($task['id']);?>">DELETE</a>
+            </td>
+
+            <td>
+            <?php if($task['done_flg'] == 0): ?>
+            <button data-id="<?php echo h($task['id']);?>" class="btn btn-info done-button">完了</button>
+            <?php endif; ?>
             </td>
 
             </tr>
